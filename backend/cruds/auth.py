@@ -10,7 +10,7 @@ from schema import auth as auth_schema
 from model.models import User
 def create_user(db: Session, user_create: auth_schema.UserCreate):
     salt = base64.b64encode(os.urandom(32))
-    hashed_password = hashlib.pbkdf2_hmac("sha256", password=user_create.password.encode(), salt=salt, iterations=1001).hex()
+    hashed_password = hashlib.pbkdf2_hmac("sha256", password=user_create.password.encode(), salt=salt, iterations=1000).hex()
     new_user = User(
         name=user_create.name,
         password=hashed_password,

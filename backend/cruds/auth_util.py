@@ -5,7 +5,7 @@ from fastapi import HTTPException, Depends, Request
 from jose import jwt, JWTError
 from fastapi_csrf_protect import CsrfProtect
 
-# openssl rand -hex 32
+# openssl rand -hex 32 をする
 SECRET_KEY = "131355d392aa1c52eb099cb2e4fbea072aedae59103c1a8fb972d16c360090ac"
 ALGORITHM = "HS256"
 JST = timezone(timedelta(hours=8), "JST")

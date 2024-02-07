@@ -15,6 +15,7 @@
 * CSRFトークンによる認証
 * JWT認証
 * cookieによるセッション管理
+* (未)データベースのasync session
 
 ![](./imgs/FastAPI_Todo.png)
 
