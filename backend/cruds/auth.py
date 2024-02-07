@@ -3,7 +3,6 @@ import base64
 import hashlib
 import secrets
 
-from fastapi import Depends
 from sqlalchemy.orm import Session
 
 from schema import auth as auth_schema
