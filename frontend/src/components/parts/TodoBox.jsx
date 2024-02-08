@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from "@mui/material"
 import { FaRegTrashCan } from "react-icons/fa6";
 import { FaPenToSquare } from "react-icons/fa6";
-
+import EditBtn from './EditBtn';
 
 const sample = [
   {
@@ -20,7 +20,7 @@ const sample = [
     "updated_at": "2024-02-08T11:23:36.121Z"
   }
 ]
-const TodoBox = ({todo}) => {
+const TodoBox = ({ todos }) => {
   return (
 <>
   <div className='border-blue-200 border rounded-xl text-xl my-2 max-w-md'>
@@ -35,9 +35,7 @@ const TodoBox = ({todo}) => {
       description
     </div>
     <div className="flex items-center justify-end m-4 ">
-      <span className=' border border-gray-200 rounded-md text-blue-200 px-6 py-2 mr-2'>
-        <FaPenToSquare />
-      </span>
+      <EditBtn />
       <span className='border border-gray-200 rounded-md text-blue-200 px-6 py-2 ml-2'>
         <FaRegTrashCan />
       </span>

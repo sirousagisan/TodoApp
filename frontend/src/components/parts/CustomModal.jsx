@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import Modal from '@mui/material/Modal';
-import { Button } from '@mui/material';
+import { FaPenToSquare } from 'react-icons/fa6';
+import { FaRegWindowClose } from "react-icons/fa";
+import { useContext } from 'react';
+import { ModalContext } from "../../components/contexts/ModalContext"
 
-const CustomModal = ({ buttonLabel, children }) => {
-  const [open, setOpen] = useState(false);
 
+const CustomModal = ({ children }) => {
+  const [open, setOpen] = useContext(ModalContext)
+  
   const handleOpen = () => {
     setOpen(true);
   };
@@ -15,25 +19,29 @@ const CustomModal = ({ buttonLabel, children }) => {
 
   return (
     <>
-      <Button onClick={handleOpen} variant="contained" color="primary">
-        {buttonLabel}
-      </Button>
+      <button onClick={handleOpen} className=' border border-gray-200 rounded-md text-blue-200 px-6 py-2 mr-2'>
+        <FaPenToSquare />
+      </button>
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        className=''
       >
-        <div className="fixed inset-0 flex items-center justify-center">
-          <div className="bg-white p-8 max-w-md mx-auto rounded-lg shadow-xl">
-            <h2 id="modal-modal-title" className="text-2xl mb-4">
-              Modal Title
-            </h2>
-            <div id="modal-modal-description">{children}</div>
-            <div className="mt-4">
-              <Button onClick={handleClose} variant="contained">
-                Close
-              </Button>
+        <div className="fixed inset-0 flex items-center justify-center min-w-80">
+          <div className="border border-blue-200 bg-slate-700 p-8 max-w-md mx-auto rounded-lg shadow-xl">
+            <div className='flex items-center justify-between mb-4'>
+              <h2 id="modal-modal-title" className="text-2xl text-blue-200">
+                Edit Todo
+              </h2>
+              <button className="text-blue-200 text-3xl" onClick={handleClose}>
+                <FaRegWindowClose />
+              </button>
+            </div>
+            <div id="modal-modal-description">
+              {/* { newChildren } */}
+              {children}
             </div>
           </div>
         </div>
