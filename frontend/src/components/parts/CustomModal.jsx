@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Modal from '@mui/material/Modal';
-import { FaPenToSquare } from 'react-icons/fa6';
+import { FaPenToSquare, FaRegTrashCan } from 'react-icons/fa6';
 import { FaRegWindowClose } from "react-icons/fa";
 import { useContext } from 'react';
 import { ModalContext } from "../../components/contexts/ModalContext"
 
 
-const CustomModal = ({ children }) => {
-  const [open, setOpen] = useContext(ModalContext)
+const CustomModal = ({ children, header, context }) => {
+  const [open, setOpen] = useContext(context)
   
   const handleOpen = () => {
     setOpen(true);
@@ -20,7 +20,7 @@ const CustomModal = ({ children }) => {
   return (
     <>
       <button onClick={handleOpen} className=' border border-gray-200 rounded-md text-blue-200 px-6 py-2 mr-2'>
-        <FaPenToSquare />
+      {header=="Edit Todo" ? <FaPenToSquare /> : <FaRegTrashCan />}
       </button>
       <Modal
         open={open}
@@ -33,7 +33,7 @@ const CustomModal = ({ children }) => {
           <div className="border border-blue-200 bg-slate-700 p-8 max-w-md mx-auto rounded-lg shadow-xl">
             <div className='flex items-center justify-between mb-4'>
               <h2 id="modal-modal-title" className="text-2xl text-blue-200">
-                Edit Todo
+                { header }
               </h2>
               <button className="text-blue-200 text-3xl" onClick={handleClose}>
                 <FaRegWindowClose />

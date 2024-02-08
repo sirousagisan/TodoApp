@@ -1,8 +1,7 @@
 import React from 'react'
-import { Button } from "@mui/material"
 import { FaRegTrashCan } from "react-icons/fa6";
-import { FaPenToSquare } from "react-icons/fa6";
 import EditBtn from './EditBtn';
+import DeleteBtn from './DeleteBtn';
 
 const sample = [
   {
@@ -34,11 +33,12 @@ const TodoBox = ({ todos }) => {
       description
       description
     </div>
-    <div className="flex items-center justify-end m-4 ">
+    <div className="flex items-center justify-end m-4 gap-4">
       <EditBtn />
-      <span className='border border-gray-200 rounded-md text-blue-200 px-6 py-2 ml-2'>
+      {/* <span className='border border-gray-200 rounded-md text-blue-200 px-6 py-2 ml-2'>
         <FaRegTrashCan />
-      </span>
+      </span> */}
+      <DeleteBtn />
     </div>
   </div>
 </>

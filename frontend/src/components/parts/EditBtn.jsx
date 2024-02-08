@@ -9,7 +9,7 @@ const EditBtn = ({ todo }) => {
     setOpen(false);
   };
   return (
-    <CustomModal buttonLabel="Edit">
+    <CustomModal buttonLabel="Edit" header={"Edit Todo"} context={ModalContext}>
       <div className="">
         {/* <input type="text" defaultValue={todo.title} /> */}
         <label htmlFor="title" className="text-blue-200 font-bold text-md">Title :</label><br/>
