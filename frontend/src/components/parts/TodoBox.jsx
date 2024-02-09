@@ -1,5 +1,4 @@
 import React from 'react'
-import { FaRegTrashCan } from "react-icons/fa6";
 import EditBtn from './EditBtn';
 import DeleteBtn from './DeleteBtn';
 
@@ -26,7 +25,12 @@ const TodoBox = ({ todos }) => {
     <div className="border border-gray-200 rounded-md px-8 py-2 m-4 max-w-40 text-sky-200">
       sample
     </div>
-    <div className="border border-gray-200 rounded-md px-8 py-2 m-4 text-sky-200 min-h-20">
+    <div className="border border-gray-200 rounded-md px-8 py-2 m-4 text-sky-200 h-20 overflow-hidden hover:overflow-scroll">
+      description
+      description
+      description
+      description
+      description
       description
       description
       description

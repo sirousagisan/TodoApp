@@ -19,7 +19,6 @@ const TodoList = () => {
       <TodoBox />
     </div>
   </div>
-
 </ModalProvider>
   )
 }

@@ -12,20 +12,23 @@ function App() {
   const Csrf = useContext(CsrfContext)
   useEffect(() => {
     const getCsrf = async () => {
-      const res = await axios.get(
+      const { data } = await axios.get(
         "http://127.0.0.1:8080/auth/csrftoken"
       )
-      axios.defaults.headers.common['X-CSRF-Token'] = res.data["csrf_token"]
+      axios.defaults.headers.common['X-CSRF-Token'] = data["csrf_token"]
     }
     getCsrf()
   }, [Csrf])
   return (
 <>
 <Navbar />
+{/* content */}
 <Routes>
   <Route path="/" element={<Login />}/>
+  <Route path="/todo" element={<TodoList />} />
 </Routes>
-<TodoList />
+{/* end content */}
+{/* <TodoList /> */}
 </>
   )
 }
