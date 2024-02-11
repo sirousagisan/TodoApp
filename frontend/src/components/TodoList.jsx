@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Navigate } from 'react-router-dom'
 import TodoBox from './parts/TodoBox'
 import { ModalProvider } from './contexts/ModalContext'
+import { IsLoginContext } from './contexts/UserContext'
 
 const TodoList = () => {
+  const Login = useContext(IsLoginContext)
+
+  if (!Login) {
+    return <Navigate to="/"/>
+  }
   return (
 <ModalProvider>
   <div className="flex flex-row justify-center gap-x-40">

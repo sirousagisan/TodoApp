@@ -16,7 +16,7 @@ class CsrfSettings(BaseModel):
     # sample key
     secret_key: str = "asecrettoeverybody"
     http_only: bool = True
-    cookie_samesite: str = "none"
+    # cookie_samesite: str = "none"
     cookie_secure: bool = True
     # header_name: str = "csrf_token"
 

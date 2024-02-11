@@ -19,6 +19,7 @@ const sample = [
   }
 ]
 const TodoBox = ({ todos }) => {
+
   return (
 <>
   <div className='border-blue-200 border rounded-xl text-xl my-2 max-w-md'>

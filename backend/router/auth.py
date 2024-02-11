@@ -12,6 +12,8 @@ from cruds import auth as auth_cruds
 from cruds import auth_util
 from database import get_db
 
+from itsdangerous import BadData, SignatureExpired, URLSafeTimedSerializer
+
 logger = getLogger(__name__)
 logger.addHandler(StreamHandler())
 logger.setLevel("INFO")
@@ -22,10 +24,21 @@ DbDependency = Annotated[Session, Depends(get_db)]
 CsrfDependency = Annotated[CsrfProtect, Depends()]
 
 @router.get("/csrftoken", response_model=auth_schema.Csrf)
-async def get_csrf_token(csrf_protect: CsrfDependency):
+async def get_csrf_token(csrf_protect: CsrfDependency, responce: Response):
     csrf_token, signed_token = csrf_protect.generate_csrf()
-    # logger.info(f"csrf {csrf_token}")
+    # logger.info(f"csrf {csrf_token} sign {signed_token}")
     res = JSONResponse({'csrf_token': csrf_token})
+    # logger.info(f"cookie key {csrf_protect._max_age}")
+    # ------
+    # logger.info(f"sogn token -> {signed_token}")
+    # logger.info(f"secret {csrf_protect._cookie_key}")
+    # serializer = URLSafeTimedSerializer(csrf_protect._secret_key, salt="fastapi-csrf-token")
+    # signature = serializer.loads(signed_token, max_age=3600)
+    # logger.info(f"signature {signature}")
+    # logger.info(f"token -> {csrf_token}")
+    # logger.info(f"sogn token -> {signed_token}")
+    # ------
+    responce.set_cookie(key=csrf_protect._cookie_key, value=signed_token)
     csrf_protect.set_csrf_cookie(signed_token, res)
     return res
 
@@ -39,8 +52,15 @@ async def create_user(request: Request,db: DbDependency, user_create: auth_schem
 async def login(request: Request, db: DbDependency, response: Response, user_form: auth_schema.UserCreate, csrf_protect: CsrfDependency):
     # logger.warning(f"request {request.headers}")
     # print(request.headers)
-    await csrf_protect.validate_csrf(request)
+    # logger.info(request.cookies)
+    
+    # serializer = URLSafeTimedSerializer(csrf_protect._secret_key, salt="fastapi-csrf-token")
+    # logger.info(f"res -> {request.cookies.get(csrf_protect._cookie_key)}")
+    # signature: str = serializer.loads(request.cookies.get(csrf_protect._cookie_key), max_age=3600)
+    # logger.info(signature)
+    
     # logger.info(f"form {user_form}")
+    # await csrf_protect.validate_csrf(request)
     user = auth_cruds.verify_user(db=db, name=user_form.name, password=user_form.password)
     if not user:
         return {"message": "Failed Authenticated"}

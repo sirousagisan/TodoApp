@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { MdLogout } from "react-icons/md";
 
+import { useLogoutMutate } from './hooks/UserMutations';
+import { IsLoginContext, IsLoginDispatchContext } from './contexts/UserContext';
+
 const Navbar = () => {
+  const LogoutMutate = useLogoutMutate()
+  const IsLogoutDispatch = useContext(IsLoginDispatchContext)
+  const LogiutHandler = () => {
+    
+    LogoutMutate.mutate({},{onSuccess: () => {
+      IsLogoutDispatch()
+    }})
+  }
   return (
 <>
 
@@ -14,7 +25,7 @@ const Navbar = () => {
       <span className='text-blue-200 text-3xl'>
         Todo App
       </span>
-      <button className="text-2xl text-blue-200">
+      <button className="text-2xl text-blue-200" onClick={LogiutHandler}>
         <MdLogout />
       </button>
     </div>
