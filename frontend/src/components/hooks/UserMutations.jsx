@@ -11,14 +11,12 @@ const useLoginMutate = () => {
   return useMutation({
   mutationKey: ["user"],
   mutationFn: async ( user ) => {
-    try {
-      const response = await axios.post("http://127.0.0.1:8080/auth/login", user, {
+    console.log(user);
+    const response = await axios.post("http://127.0.0.1:8080/auth/login", user, {
         withCredentials: true,
       });
       return response.data; // データの返却が必要な場合は適切な値を返す
-    } catch (error) {
-      throw error; // エラーを再スローして react-query がエラー状態になるようにする
-    }
+    
   },
   onSuccess: () => {
     navigate("/todo")

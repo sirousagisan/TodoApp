@@ -13,8 +13,10 @@ function App() {
   useEffect(() => {
     const getCsrf = async () => {
       const { data } = await axios.get(
-        "http://127.0.0.1:8080/auth/csrftoken"
+        "http://127.0.0.1:8080/auth/csrftoken",
+        {withCredentials: true}
       )
+      
       axios.defaults.headers.common['X-CSRF-Token'] = data["csrf_token"]
     }
     getCsrf()
