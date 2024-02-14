@@ -8,7 +8,7 @@ from fastapi_csrf_protect import CsrfProtect
 # openssl rand -hex 32 をする
 SECRET_KEY = "secretkey123"
 ALGORITHM = "HS256"
-JST = timezone(timedelta(hours=8), "JST")
+JST = timezone(timedelta(hours=9), "JST")
 
 CsrfDependency = Annotated[CsrfProtect, Depends()]
 
