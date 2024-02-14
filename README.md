@@ -9,6 +9,8 @@
 * useContextによるグローバル変数
 * TailwindCSSによるスタイリング
 
+![](./imgs/top_page.png)
+
 ## Backend
 
 * ユーザーログイン機能
