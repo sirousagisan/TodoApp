@@ -15,11 +15,11 @@ const TodoBox = ({ todo }) => {
       
     </div>
     <div className="flex items-center justify-end m-4 gap-4">
-      <EditBtn />
+      <EditBtn key={todo.id} todo={todo}/>
       {/* <span className='border border-gray-200 rounded-md text-blue-200 px-6 py-2 ml-2'>
         <FaRegTrashCan />
       </span> */}
-      <DeleteBtn />
+      <DeleteBtn todo={todo}/>
     </div>
   </div>
 </>

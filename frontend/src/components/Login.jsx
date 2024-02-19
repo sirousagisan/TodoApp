@@ -3,6 +3,7 @@ import { TextField } from '@mui/material'
 
 import { UserContext, IsLoginDispatchContext, IsLoginContext } from './contexts/UserContext'
 import { useLoginMutate } from './hooks/UserMutations'
+import { Navigate } from 'react-router-dom'
 
 const Login = () => {
   const [ user, SetUser] = useContext(UserContext)
@@ -16,6 +17,7 @@ const Login = () => {
     }})
     setUser({name: "", password: ""})
   }
+  
   return (
 <>
 <div className="flex flex-row justify-center mt-12">
