@@ -9,9 +9,11 @@
 * useContextによるグローバル変数
 * TailwindCSSによるスタイリング
 
+![](./imgs/top_page.png)
+
+
 ![](./imgs/todo_top.png)
 
-![](./imgs/top_page.png)
 
 ## Backend
 
