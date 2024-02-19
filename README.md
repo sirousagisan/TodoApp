@@ -9,6 +9,8 @@
 * useContextによるグローバル変数
 * TailwindCSSによるスタイリング
 
+* (未)CRUDとキャッシュ
+
 ![](./imgs/top_page.png)
 
 

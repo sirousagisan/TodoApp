@@ -14,22 +14,22 @@ const sample = [
   },
   {
     "id": 2,
-    "name": "sample todo2",
-    "description": "example description",
+    "name": "sample2",
+    "description": "rennsyuu",
     "complete": false,
     "updated_at": "2024-02-08T11:23:36.121Z"
   },
   {
     "id": 3,
-    "name": "sample todo3",
-    "description": "example description",
+    "name": "todo3",
+    "description": "description",
     "complete": false,
     "updated_at": "2024-02-08T11:23:36.121Z"
   },
   {
     "id": 4,
     "name": "sample_todo4",
-    "description": "example_description",
+    "description": "example",
     "complete": true,
     "updated_at": "2024-02-08T11:23:36.121Z"
   },
