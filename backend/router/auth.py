@@ -12,7 +12,6 @@ from cruds import auth as auth_cruds
 from cruds import auth_util
 from database import get_db
 
-from itsdangerous import BadData, SignatureExpired, URLSafeTimedSerializer
 
 logger = getLogger(__name__)
 logger.addHandler(StreamHandler())
